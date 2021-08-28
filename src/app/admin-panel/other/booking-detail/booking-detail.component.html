@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-around">
+        <h3 class="text-center my-2">Booking Detail</h3>
+      </div>
+      <div class="d-flex">
+        <!-- <button type="button" [routerLink]="['/home/booking-form']" routerLinkActive="router-link-active"  class="btn btn-primary mx-2 my-2" style="float: right;">
+              Add Booking
+              </button> -->
+        <button type="button" (click)="bookRoute(property[0].propertyId)"
+          [ngClass]="propertyid == '0' ? 'active' : ' btn-primary'" class="btn mx-2 my-2">
+          Brvilla
+          <!-- [routerLink]="['/home/booking-detail', property[0].propertyId]" -->
+        </button>
+        <button type="button" (click)="bookRoute(property[1].propertyId)"
+          [ngClass]="propertyid == '1' ? 'active' : ' btn-primary'" class="btn  mx-2 my-2">
+          Adarshvilla
+        </button>
+        <button type="button" (click)="bookRoute(property[2].propertyId)"
+          [ngClass]="propertyid == '2' ? 'active' : ' btn-primary'" class="btn  mx-2 my-2">
+          Villa 3
+        </button>
+      </div>
+
+      <div class="search mt-2 d-flex">
+        <input type="text" class="mx-1 form-control" placeholder="Search By Id & Name" style="width: auto;"
+          [(ngModel)]="filtered">
+        <button class="btn btn-primary mx-2" type="button" *ngIf="router.url !== '/home/booking-detail'"
+          (click)="calendeView()">Calender View</button>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="table" *ngIf="!propertyid">
+          <thead>
+
+            <tr>
+              <!-- <th scope="col">
+                   </th> -->
+              <th scope="col"> Unique Id</th>
+              <th scope="col" class="px-5">Name</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Date</th>
+              <th scope="col">Booking Amount</th>
+              <th scope="col">Booking Advance</th>
+              <th scope="col">Status</th>
+              <th scope="col">Get Link
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of bookData | filter:filtered ">
+              <!-- <td>{{i + 1}}</td> -->
+              <th scope="row">{{item.uniqueId}}</th>
+              <th scope="row">{{item.name}}</th>
+              <th scope="row">{{item.phoneNo}}</th>
+              <th scope="row">{{item.dateCheckin}}</th>
+              <th scope="row">{{item.bookingAmount}}</th>
+              <th scope="row">{{item.bookingAdvance}}</th>
+              <th scope="row">
+                <p class="red" [ngClass]="{green: item.status == 'true'}"></p>
+
+              </th>
+              <td>
+                <button class="btn btn-dark mx-2 my-2" (click)="onShare(item.uniqueId)">Copy</button>
+                <button class="btn btn-dark mx-2 my-2" [routerLink]="['/home/user-booking', item.id]">View </button>
+                <button class="btn btn-dark mx-2 my-2" [routerLink]="['/home/booking-form', item.id]">edit</button>
+                <button class="btn btn-dark mx-2 my-2" (click)="onDelete(item.id,item.imagePath)">delete </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <table class="table" *ngIf="propertyid">
+          <thead>
+
+            <tr>
+              <!-- <th scope="col">
+                   </th> -->
+              <th scope="col">
+
+                Unique Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone No</th>
+              <th scope="col">Date</th>
+              <th scope="col">Booking Amount</th>
+              <th scope="col">Booking Advance</th>
+              <th scope="col">Status</th>
+              <th scope="col">Get Link
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of bookData | filter:filtered ">
+              <!-- <td>{{i + 1}}</td> -->
+              <th scope="row">{{item.uniqueId}}</th>
+              <th scope="row">{{item.name}}</th>
+              <th scope="row">{{item.phoneNo}}</th>
+              <th scope="row">{{item.dateCheckin}}</th>
+              <th scope="row">{{item.bookingAmount}}</th>
+              <th scope="row">{{item.bookingAdvance}}</th>
+              <th scope="row">
+                <p class="red" [ngClass]="{green: item.status == 'true'}"></p>
+
+              </th>
+              <td>
+                <button class="btn btn-dark mx-2 my-2" (click)="onShare(item.uniqueId)">Copy</button>
+                <button class="btn btn-dark mx-2 my-2" [routerLink]="['/home/user-booking', item.id]">View </button>
+                <button class="btn btn-dark mx-2 my-2" [routerLink]="['/home/booking-form', item.id]">edit</button>
+                <button class="btn btn-dark mx-2 my-2" (click)="onDelete(item.id,item.imagePath)">delete </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

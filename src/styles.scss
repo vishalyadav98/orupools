@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.btn-dark{
+    background-image: linear-gradient(to right top, #0784ae, #0096bc, #00a8c8, #00bad2, #00ccda);
+}
+
+.btn-primary{
+    font-size: 13px;
+    background-image: linear-gradient(to right top, #0784ae, #0096bc, #00a8c8, #00bad2, #00ccda);
+}
+.fc-direction-ltr .fc-button-group>.fc-button:not(:first-child){
+    font-size: 12px !important;
+}
+.fc-direction-ltr .fc-button-group>.fc-button:not(:last-child){
+    font-size: 12px !important;
+}

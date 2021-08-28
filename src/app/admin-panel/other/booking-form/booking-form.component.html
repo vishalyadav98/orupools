@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="my-2 text-center" *ngIf="!id">Booking Form</h3>
+            <h3 class="my-2 text-center" *ngIf="id">Edit Booking Form</h3>
+            <form [formGroup]="bookingFormData" (ngSubmit)="onSubmit()">
+                <label class="mt-2">Name</label><br>
+                <input type="text" class="form-control" formControlName="name">
+                <label class="mt-2">Dob</label><br>
+                <input type="date" class="form-control" formControlName="dob">
+                <label class="mt-2">Email</label><br>
+                <input type="text" class="form-control" formControlName="email">
+                <label class="mt-2">Mobile No</label><br>
+                <input type="number" class="form-control" formControlName="phoneNo">
+                <label class="mt-2">Booking Amount</label><br>
+                <input type="text" class="form-control" formControlName="bookingAmount">
+                <label class="mt-2">Booking Advance</label><br>
+                <input type="text" class="form-control" formControlName="bookingAdvance">
+                <label class="mt-2">Number Of Adults</label><br>
+                <input type="text" class="form-control" formControlName="numberAdults">
+                <label class="mt-2">Number Of Children</label><br>
+                <input type="text" class="form-control" formControlName="numberChild">
+                <label class="mt-2">Booking Remarks</label><br>
+                <textarea type="text" class="form-control" formControlName="bookingRemark"></textarea>
+                <label class="mt-2">Date Of CheckIn</label><br>
+                <input type="date" class="form-control" formControlName="dateCheckin">
+                <label class="mt-2">Date Of CheckOut</label><br>
+                <input type="date" [min]="24-08-2021" class="form-control" formControlName="dateCheckout">
+                <!-- <input type="text" id="datepicker" class="form-control" formControlName="dateCheckout" /> -->
+                <label class="mt-2">Time</label><br>
+                <input type="text" class="form-control" formControlName="timeCheckout">
+                <label class="mt-2">Type Of Booking</label><br>
+                <input type="text" class="form-control" formControlName="typeBooking">
+                <label class="mt-2">Property</label><br>
+                <select class="form-select" formControlName="propertyId">
+                    <option [value]="null" disabled>Select Property</option>
+                    <option [value]="item.propertyId" *ngFor="let item of property">{{item.propertyTitle}}</option>
+                </select>
+                <label class="mt-2">Payment Screenshot</label><br>
+                <input type="file" class="form-control">
+
+                <button type="submit" class="btn btn-primary my-2" *ngIf="!id">Submit</button>
+                <button type="submit" class="btn btn-primary my-2" *ngIf="id">Update</button>
+            </form>
+
+        </div>
+    </div>
+</div>

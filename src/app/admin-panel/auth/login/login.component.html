@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="container mt-5">
+        <div class="row mx-auto my-5">
+            <div class="col-md-6 mx-auto card">
+                <h3 class="my-2 text-center">Admin Login</h3>
+                  <form #loginform= "ngForm" (ngSubmit)="onSubmit(loginform)"> 
+                      <label >Email</label><br>
+                      <input type="text" class="form-control" name="email" ngModel>
+                      <label>Password</label><br>
+                      <input type="text" class="form-control" name="password" ngModel >
+                      <button type="submit" class="btn btn-primary py-1 px-3 my-2">Login</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+    </div>

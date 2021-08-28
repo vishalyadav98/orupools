@@ -1,0 +1,88 @@
+<div class="wrapper">
+  <div class="container" style="height: 80vh;">
+    <div class="row context">
+      <div class="col-md-1"></div>
+      <div class="col-md-4 panel pt-5 text-center">
+        <div class="text-center subpanel my-5" style="color: white;">
+          <img src="../../../assets/img/logo.png" class="my-3" height="100px" width="200px" />
+          <h4>Contact Us</h4>
+          <p>
+            Call us For any Query/Bulk Bookings
+            <br> +91-9588062419
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 card ">
+
+        <div class="formdiv px-2 mb-3">
+          <div *ngIf="formValue.status == 'true'">
+            <h4 class="text-center mt-2">Form is already submitted</h4>
+          </div>
+          <h3 class="my-2 text-center">Booking Form</h3>
+          <form [formGroup]="bookingFormData" (ngSubmit)="onSubmit()" id="formd">
+            <input type="text" name="uniqueId" class="d-none" formControlName="uniqueId">
+            <label class="mt-2">*Name</label><br>
+            <input type="text" class="form-control" name="name" formControlName="name"
+              [readonly]="formValue.status == 'true'">
+            <p class="text-danger" *ngIf="bookingFormData.get('name').invalid && bookingFormData.get('name').touched">
+              This field is required</p>
+            <label class="mt-2">*Dob</label><br>
+            <input type="date" class="form-control" formControlName="dob" [readonly]="formValue.status == 'true' ">
+            <p class="text-danger" *ngIf="bookingFormData.get('dob').invalid && bookingFormData.get('dob').touched">
+              This field is required</p>
+            <label class="mt-2">*Email</label><br>
+            <input type="text" class="form-control" name="email" formControlName="email"
+              [readonly]="formValue.status == 'true' ">
+            <p class="text-danger" *ngIf="bookingFormData.get('email').invalid && bookingFormData.get('email').touched">
+              This field is required</p>
+            <label class="mt-2">*Mobile No</label><br>
+            <input type="number" class="form-control" name="phoneNo" formControlName="phoneNo"
+              [readonly]="formValue.status == 'true' ">
+            <p class="text-danger"
+              *ngIf="bookingFormData.get('phoneNo').invalid && bookingFormData.get('phoneNo').touched">
+              This field is required</p>
+            <label class="mt-2">*Booking Amount</label><br>
+            <input type="text" class="form-control" name="bookingAmount" formControlName="bookingAmount" readonly>
+            <label class="mt-2">*Booking Advance</label><br>
+            <input type="text" class="form-control" name="bookingAdvance" formControlName="bookingAdvance" readonly>
+            <label class="mt-2">*Number Of Adults</label><br>
+            <input type="text" class="form-control" name="numberAdults" formControlName="numberAdults" readonly>
+            <label class="mt-2">*Number Of Children</label><br>
+            <input type="text" class="form-control" name="numberChild" formControlName="numberChild" readonly>
+            <label class="mt-2">*Booking Remarks</label><br>
+            <textarea type="text" class="form-control" name="bookingRemark" formControlName="bookingRemark"
+              readonly></textarea>
+            <label class="mt-2">*Date Of CheckIn</label><br>
+            <input type="date" class="form-control" name="dateCheckin" formControlName="dateCheckin" readonly>
+            <label class="mt-2">*Date Of CheckOut</label><br>
+            <input type="date" class="form-control" name="dateCheckout" formControlName="dateCheckout" readonly>
+            <label class="mt-2">*Time</label><br>
+            <input type="text" class="form-control" name="timeCheckout" formControlName="timeCheckout" readonly>
+            <label class="mt-2">*Type Of Booking</label><br>
+            <input type="text" class="form-control" name="typeBooking" formControlName="typeBooking" readonly>
+            <label class="mt-2">*Property</label><br>
+            <select class="form-select" formControlName="propertyId" [attr.disabled]="true">
+              <option [value]="null" disabled>Select Property</option>
+              <option [value]="item.propertyId" *ngFor="let item of property">{{item.propertyTitle}}</option>
+            </select>
+            <label class="mt-2">*Payment Screenshot</label><br>
+            <input type="file" class="form-control" [attr.disabled]="formValue.status == 'true'? '' : null"
+              formControlName="imageInput" (change)="upload($event)">
+            <img [src]="url" height="100"><br>
+            <p class="text-danger"
+              *ngIf="bookingFormData.get('imageInput').invalid && bookingFormData.get('imageInput').touched">
+              This field is required</p>
+            <input type="checkbox" [disabled]="formValue.status == 'true'" [checked]="formValue.status == 'true'"
+              (click)="termsSelect()" class="my-3">
+            I Agree With Terms & Conditions
+            <div class="mb-5 abovediv"></div>
+            <button type="submit" (click)="formSubmit()"
+              [disabled]="(!bookingFormData.valid || termsCheck == false) || (formValue.status == 'true' || !bookingFormData.valid  )"
+              class="btn btn-primary my-2 submitbtn">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</div>

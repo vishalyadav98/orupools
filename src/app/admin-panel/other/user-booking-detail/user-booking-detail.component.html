@@ -1,0 +1,126 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center my-2">User Booking Detail</h3>
+      <h4 class="text-center my-3" *ngIf="!this.userBookingData">No Booking By User!!</h4>
+      <div class="row" *ngIf="this.userBookingData">
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Name:
+          </strong>
+          <p>{{this.userBookingData.name}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Date of birth:
+          </strong>
+          <p>{{this.userBookingData.dob}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Email:
+          </strong>
+          <p>{{this.userBookingData.email}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Phone No:
+          </strong>
+          <p>{{this.userBookingData.phoneNo}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Booking Amount:
+          </strong>
+          <p>{{this.userBookingData.bookingAmount}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Booking Advance:
+          </strong>
+          <p>{{this.userBookingData.bookingAdvance}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Number of adults:
+          </strong>
+          <p>{{this.userBookingData.numberAdults}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Number of child:
+          </strong>
+          <p>{{this.userBookingData.numberChild}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Booking Remark:
+          </strong>
+          <p>{{this.userBookingData.bookingRemark}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Date of CheckIn:
+          </strong>
+          <p>{{this.userBookingData.dateCheckin}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Date of CheckOut:
+          </strong>
+          <p>{{this.userBookingData.dateCheckout}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Time:
+          </strong>
+          <p>{{this.userBookingData.timeCheckout}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Type of booking:
+          </strong>
+          <p>{{this.userBookingData.typeBooking}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Property:
+          </strong>
+          <p>{{this.userBookingData.propertyTitle}}</p>
+        </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+            Payment Screenshot:
+          </strong>
+
+          <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img [src]="this.userBookingData.imageUrl" height="100px" width="70px" />
+          </div>
+          <!--  <a [href]="imageLink" download="mergedImage">Download as image</a> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Payment Screenshot</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="this.userBookingData.imageUrl" width="100%" style="height: 80vh;" />
+      </div>
+    </div>
+  </div>
+</div>

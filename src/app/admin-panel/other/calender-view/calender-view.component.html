@@ -1,0 +1,31 @@
+<h4 class="my-2 text-center" *ngIf="propertyid == 0">BRVilla</h4>
+<h4 class="my-2 text-center" *ngIf="propertyid == 1">Adarshvilla</h4>
+<h4 class="my-2 text-center" *ngIf="propertyid == 2">Villa 3</h4>
+
+<div class="container">
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" [ngClass]="openmodal ? 'show' : 'hide'" id="exampleModal" tabindex="-1"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Booking Details</h5>
+        <button type="button" class="btn-close" (click)="openmodal=!openmodal" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngFor="let item of modalData">
+        {{item?.title}}<br>
+        Date: {{item?.date}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="openmodal=!openmodal"
+          data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
