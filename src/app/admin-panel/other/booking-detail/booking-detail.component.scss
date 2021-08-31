@@ -19,3 +19,23 @@
     color: white;
     font-size: 13px;
 }
+.btn-dark{
+    font-size: 12px;
+    width: 100%;
+}
+
+@media (max-width: 500px) {
+    table{
+        display: none;
+    }
+    
+}
+@media (max-width: 500px) {
+    .mobile-view{
+        display: block !important;
+    }
+    
+}
+.mobile-view{
+    display: none;
+}
