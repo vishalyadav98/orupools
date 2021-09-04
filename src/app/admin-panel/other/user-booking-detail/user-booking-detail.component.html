@@ -99,7 +99,16 @@
           </div>
           <!--  <a [href]="imageLink" download="mergedImage">Download as image</a> -->
         </div>
+        <div class="col-md-4 col-sm-3">
+          <strong>
+           Upload ID Proof:
+          </strong>
 
+          <div data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            <img [src]="this.userBookingData.imageUrlId" height="100px" width="70px" />
+          </div>
+          <!--  <a [href]="imageLink" download="mergedImage">Download as image</a> -->
+        </div>
       </div>
     </div>
   </div>
@@ -120,6 +129,20 @@
       </div>
       <div class="modal-body">
         <img [src]="this.userBookingData.imageUrl" width="100%" style="height: 80vh;" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">Upload ID Proof</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="this.userBookingData.imageUrlId" width="100%" style="height: 80vh;" />
       </div>
     </div>
   </div>

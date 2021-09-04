@@ -76,18 +76,24 @@ export class BookingDetailComponent implements OnInit {
     document.body.removeChild(selBox);
   }
 
-  onDelete(id: any, imagepath: any) {
+  onDelete(id:any, imagepath:any,imagepathid:any) {
     let txt;
     if (confirm("Press Ok to confirm delete!")) {
       txt = "You pressed OK!";
       console.log(txt)
       this.orupoolService.deleteBooking(id)
-      if (imagepath) {
+      if (imagepath && imagepathid ) {
         console.log(imagepath)
         let ref = firebase.storage().ref()
         console.log(ref)
         ref.child(imagepath).delete()
+
+        console.log(imagepathid)
+        let ref2 = firebase.storage().ref()
+        console.log(ref2)
+        ref2.child(imagepathid).delete()
       }
+      
     } else {
       txt = "You pressed Cancel!";
       console.log(txt)

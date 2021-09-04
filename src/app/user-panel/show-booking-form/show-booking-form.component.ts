@@ -7,7 +7,6 @@ import { OrupoolService } from 'src/app/service/orupool.service';
 import { ToastrService } from 'ngx-toastr';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
-
 @Component({
   selector: 'app-show-booking-form',
   templateUrl: './show-booking-form.component.html',
@@ -20,10 +19,13 @@ export class ShowBookingFormComponent implements OnInit {
   formValue:any = []
   imagepath:any
   imageurl:any
+  imagepathid:any
+  imageurlid:any
   id:any;
   submitted:any = false;
   termsCheck:any = false;
   url:any;
+  url2:any;
   isDisabled:any
   property:any = 
   [{
@@ -77,7 +79,8 @@ export class ShowBookingFormComponent implements OnInit {
       'timeCheckout': new FormControl(this.formValue.timeCheckout,[Validators.required]),
       'typeBooking': new FormControl(this.formValue.typeBooking,[Validators.required]),
       'propertyId': new FormControl(this.formValue.propertyId,[Validators.required]),
-       'imageInput': new FormControl(null,[Validators.required])
+       'imageInput': new FormControl(null,[Validators.required]),
+       'imageIdProof': new FormControl(null,[Validators.required])
     })
   }
 
@@ -86,6 +89,8 @@ console.log("userfill data",this.bookingFormData.value)
 this.bookingFormData.value.status = "true"
 this.bookingFormData.value.imageUrl = this.imageurl
 this.bookingFormData.value.imagePath =  this.imagepath
+this.bookingFormData.value.imageUrlId = this.imageurlid
+this.bookingFormData.value.imagePathId =  this.imagepathid
 this.orupoolService.addUserBooking(this.id,this.bookingFormData.value)
 let smsData = {
   From: "orupol",
@@ -139,8 +144,30 @@ viewImage(){
     console.log(res)
     this.imageurl = res
     console.log("image link", this.imageurl)
-  })
-  
+  }) 
+}
+uploadIdImage(event:any){
+  var reader = new FileReader();
+
+  reader.readAsDataURL(event.target.files[0]);
+
+  reader.onload = (event) => {
+    this.url2 = event.target?.result;
+  }
+  let filepath = event.target.files[0]
+ this.imagepathid = '/Id-proof'+ this.uniqueId
+this.storage.upload(this.imagepathid,filepath).then(res =>{
+console.log(res)
+this.viewImageId()
+})
+}
+viewImageId(){
+  const ref = this.storage.ref(this.imagepathid)
+  let link = ref.getDownloadURL().subscribe(res => {
+    console.log(res)
+    this.imageurlid = res
+    console.log("image link", this.imageurlid)
+  }) 
 }
 showSuccess() {
   this.toastr.success('Submitted Successfully');

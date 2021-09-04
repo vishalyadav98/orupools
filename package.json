@@ -23,6 +23,7 @@
     "@fullcalendar/angular": "^5.9.0",
     "@fullcalendar/daygrid": "^5.9.0",
     "@fullcalendar/interaction": "^5.9.0",
+    "@swiper/core": "^0.0.21",
     "dom-to-image": "^2.6.0",
     "emailjs-com": "^3.2.0",
     "file-saver": "^2.0.5",
